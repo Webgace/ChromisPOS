@@ -122,10 +122,56 @@ public final class ChromisTheme {
         UIManager.put("ComboBox.selectionBackground", ACCENT_BLUE);
         UIManager.put("ComboBox.selectionForeground", Color.WHITE);
 
-        // Tabs
+        // Tabs — Nimbus state-based text colors
         UIManager.put("TabbedPane.selected",        BG_CARD);
-        UIManager.put("TabbedPane.background",      BG_PANEL);
+        UIManager.put("TabbedPane.background",      BG_DARK);
         UIManager.put("TabbedPane.foreground",      TEXT_PRIMARY);
+        UIManager.put("TabbedPane.contentAreaColor", BG_PANEL);
+        UIManager.put("TabbedPane.tabAreaBackground", BG_DARK);
+        UIManager.put("TabbedPane:Tab[Enabled].textForeground",                      TEXT_PRIMARY);
+        UIManager.put("TabbedPane:Tab[Enabled+MouseOver].textForeground",            ACCENT_GOLD);
+        UIManager.put("TabbedPane:Tab[Enabled+Pressed].textForeground",              ACCENT_GOLD);
+        UIManager.put("TabbedPane:Tab[Selected].textForeground",                     ACCENT_GOLD);
+        UIManager.put("TabbedPane:Tab[Focused+Selected].textForeground",             ACCENT_GOLD);
+        UIManager.put("TabbedPane:Tab[MouseOver+Selected].textForeground",           ACCENT_GOLD);
+        UIManager.put("TabbedPane:Tab[Pressed+Selected].textForeground",             ACCENT_GOLD);
+        UIManager.put("TabbedPane:Tab[Focused+MouseOver+Selected].textForeground",   ACCENT_GOLD);
+        UIManager.put("TabbedPane:Tab[Focused+Pressed+Selected].textForeground",     ACCENT_GOLD);
+
+        // Labels
+        UIManager.put("Label.foreground",                       TEXT_PRIMARY);
+        UIManager.put("Label[Enabled].textForeground",          TEXT_PRIMARY);
+        UIManager.put("Label[Disabled].textForeground",         TEXT_MUTED);
+
+        // Checkboxes / radio buttons
+        UIManager.put("CheckBox.foreground",                    TEXT_PRIMARY);
+        UIManager.put("CheckBox[Enabled].textForeground",       TEXT_PRIMARY);
+        UIManager.put("RadioButton.foreground",                 TEXT_PRIMARY);
+        UIManager.put("RadioButton[Enabled].textForeground",    TEXT_PRIMARY);
+
+        // Spinners and formatted text fields
+        UIManager.put("Spinner.background",                     BG_CARD);
+        UIManager.put("Spinner.foreground",                     TEXT_PRIMARY);
+        UIManager.put("\"Spinner.formattedTextField\".foreground",          TEXT_PRIMARY);
+        UIManager.put("\"Spinner.formattedTextField\"[Enabled].textForeground", TEXT_PRIMARY);
+        UIManager.put("FormattedTextField.background",          BG_CARD);
+        UIManager.put("FormattedTextField.foreground",          TEXT_PRIMARY);
+        UIManager.put("FormattedTextField[Enabled].textForeground", TEXT_PRIMARY);
+        UIManager.put("FormattedTextField.caretForeground",     ACCENT_GOLD);
+
+        // Text areas
+        UIManager.put("TextArea.background",    BG_CARD);
+        UIManager.put("TextArea.foreground",    TEXT_PRIMARY);
+        UIManager.put("TextPane.background",    BG_CARD);
+        UIManager.put("TextPane.foreground",    TEXT_PRIMARY);
+
+        // Titled borders (section headers like "Configuração do recibo")
+        UIManager.put("TitledBorder.titleColor", ACCENT_GOLD);
+
+        // Password field
+        UIManager.put("PasswordField.background",  BG_CARD);
+        UIManager.put("PasswordField.foreground",  TEXT_PRIMARY);
+        UIManager.put("PasswordField.caretForeground", ACCENT_GOLD);
 
         // Menus
         UIManager.put("Menu.background",            BG_PANEL);
