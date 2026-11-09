@@ -143,7 +143,36 @@ public class JPrincipalApp extends javax.swing.JPanel implements AppUserView {
         ScriptEngine eng = ScriptFactory.getScriptEngine(ScriptFactory.BEANSHELL);
         eng.put("menu", menu);
         eng.eval(menutext);
-        return menu.getTaskPane();
+        JXTaskPaneContainer taskPane = menu.getTaskPane();
+        styleTaskPane(taskPane);
+        return taskPane;
+    }
+
+    private void styleTaskPane(java.awt.Container container) {
+        java.awt.Color textPrimary = ChromisTheme.TEXT_PRIMARY;
+        java.awt.Color bgPanel = ChromisTheme.BG_PANEL;
+        java.awt.Color bgCard = ChromisTheme.BG_CARD;
+        java.awt.Color accentGold = ChromisTheme.ACCENT_GOLD;
+        for (java.awt.Component comp : container.getComponents()) {
+            comp.setBackground(bgPanel);
+            comp.setForeground(textPrimary);
+            if (comp instanceof JXTaskPane) {
+                JXTaskPane tp = (JXTaskPane) comp;
+                tp.setBackground(bgCard);
+                tp.setForeground(accentGold);
+                tp.setFont(ChromisTheme.FONT_SMALL.deriveFont(java.awt.Font.BOLD));
+            }
+            if (comp instanceof javax.swing.AbstractButton) {
+                javax.swing.AbstractButton btn = (javax.swing.AbstractButton) comp;
+                btn.setBackground(bgPanel);
+                btn.setForeground(textPrimary);
+                btn.setFont(ChromisTheme.FONT_SMALL);
+                btn.setOpaque(false);
+            }
+            if (comp instanceof java.awt.Container) {
+                styleTaskPane((java.awt.Container) comp);
+            }
+        }
     }
 
     private void assignMenuButtonIcon() {
@@ -563,6 +592,16 @@ public class JPrincipalApp extends javax.swing.JPanel implements AppUserView {
     }
 
     private void applyModernStyling() {
+        // JXTaskPane UIManager overrides — must be set before menu is built
+        javax.swing.UIManager.put("TaskPane.foreground", ChromisTheme.ACCENT_GOLD);
+        javax.swing.UIManager.put("TaskPane.background", ChromisTheme.BG_CARD);
+        javax.swing.UIManager.put("TaskPane.titleForeground", ChromisTheme.ACCENT_GOLD);
+        javax.swing.UIManager.put("TaskPane.titleOver", ChromisTheme.TEXT_PRIMARY);
+        javax.swing.UIManager.put("TaskPaneContainer.background", ChromisTheme.BG_PANEL);
+        javax.swing.UIManager.put("TaskPane.titleBackgroundGradientStart", ChromisTheme.BG_CARD);
+        javax.swing.UIManager.put("TaskPane.titleBackgroundGradientEnd", ChromisTheme.BG_DARK);
+        javax.swing.UIManager.put("TaskPane.borderColor", ChromisTheme.ACCENT_GOLD);
+
         // Sidebar — deep navy with gold right border
         jPanel1.setBackground(ChromisTheme.BG_PANEL);
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 2, ChromisTheme.ACCENT_GOLD));
