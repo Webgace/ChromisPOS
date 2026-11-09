@@ -162,10 +162,9 @@ public class AppConfig implements AppProperties {
          */
         m_propsconfig.setProperty("machine.hostname", getLocalHostName());
 
-        Locale l = Locale.getDefault();
-        m_propsconfig.setProperty("user.language", l.getLanguage());
-        m_propsconfig.setProperty("user.country", l.getCountry());
-        m_propsconfig.setProperty("user.variant", l.getVariant());
+        m_propsconfig.setProperty("user.language", "pt");
+        m_propsconfig.setProperty("user.country", "PT");
+        m_propsconfig.setProperty("user.variant", "");
         m_propsconfig.setProperty("swing.defaultlaf", System.getProperty("swing.defaultlaf", "javax.swing.plaf.nimbus.NimbusLookAndFeel"));
         m_propsconfig.setProperty("machine.printer", "screen");
         m_propsconfig.setProperty("machine.printer.2", "Not defined");

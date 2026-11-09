@@ -328,21 +328,24 @@ public class JRootApp extends JPanel implements AppView {
             }
         }
 
+        // Update Window.Title in DB to match new brand
+        try {
+            m_dlSystem.setResource("Window.Title", 0,
+                "Zunga Electr\u00F3nica | TIIBS, Lda".getBytes("UTF-8"));
+        } catch (Exception e) {}
+
         // change text under logo
         String newText = AppConfig.getInstance().getProperty("start.text");
         if (newText != null) {
             if (newText.equals("")) {
-                jLabel1.setText("<html><center>Chromis POS - The New Face of Open Source POS<br>"
-                        + "Copyright \u00A9 2015 Chromis <br>"
-                        + "<br>"
-                        + "http://www.chromis.co.uk<br>"
-                        + "<br>"
-                        + " Chromis POS is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br>"
-                        + "<br>"
-                        + " Chromis POS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.<br>"
-                        + "<br>"
-                        + "You should have received a copy of the GNU General Public License along with Chromis POS.  If not, see http://www.gnu.org/licenses/<br>"
-                        + "</center>");
+                jLabel1.setText("<html><div style='font-family:SansSerif;text-align:center;padding:20px;'>"
+                        + "<span style='font-size:22pt;font-weight:bold;color:#D9A010;'>Zunga Electr\u00F3nica</span><br><br>"
+                        + "<span style='font-size:12pt;color:#8BA3C8;'>TIIBS, Lda &mdash; Technology Consultants</span><br><br>"
+                        + "<span style='font-size:9pt;color:#5A7A9A;'>Sistema de Ponto de Venda<br>"
+                        + "Vers\u00E3o " + AppLocal.APP_VERSION + "<br><br>"
+                        + "Software livre licenciado sob GNU GPL v3<br>"
+                        + "Baseado em Chromis POS &copy; 2015</span>"
+                        + "</div>");
             } else {
                 try {
                     String newTextCode = new Scanner(new File(newText), "UTF-8").useDelimiter("\\A").next();
@@ -800,17 +803,17 @@ public class JRootApp extends JPanel implements AppView {
     }
 
     private void applyModernStyling() {
-        // Header strip
+        // Header — dark navy with gold bottom border
         m_jPanelTitle.setBackground(ChromisTheme.BG_DARK);
-        m_jPanelTitle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, ChromisTheme.ACCENT_TEAL));
+        m_jPanelTitle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, ChromisTheme.ACCENT_GOLD));
         m_jLblTitle.setFont(ChromisTheme.FONT_HEADER);
-        m_jLblTitle.setForeground(ChromisTheme.TEXT_PRIMARY);
+        m_jLblTitle.setForeground(ChromisTheme.ACCENT_GOLD);
         jLabel2.setForeground(ChromisTheme.TEXT_MUTED);
         jLabel2.setFont(ChromisTheme.FONT_SMALL);
         jLabel2.setBackground(ChromisTheme.BG_DARK);
         jLabel2.setOpaque(true);
 
-        // Login panel areas
+        // Login panel
         m_jPanelLogin.setBackground(ChromisTheme.BG_DARK);
         jPanel4.setBackground(ChromisTheme.BG_DARK);
         jPanel5.setBackground(ChromisTheme.BG_PANEL);
@@ -818,23 +821,24 @@ public class JRootApp extends JPanel implements AppView {
         jPanel2.setBackground(ChromisTheme.BG_PANEL);
         jPanel8.setBackground(ChromisTheme.BG_PANEL);
         jPanel1.setBackground(ChromisTheme.BG_PANEL);
-        jScrollPane1.setBackground(ChromisTheme.BG_DARK);
-        jScrollPane1.getViewport().setBackground(ChromisTheme.BG_DARK);
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(ChromisTheme.BORDER_COLOR, 1));
+        jScrollPane1.setBackground(ChromisTheme.BG_PANEL);
+        jScrollPane1.getViewport().setBackground(ChromisTheme.BG_PANEL);
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, ChromisTheme.ACCENT_GOLD));
 
-        // Status bar
+        // Status bar — dark with gold top border
         m_jPanelDown.setBackground(ChromisTheme.BG_DARK);
-        m_jPanelDown.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, ChromisTheme.ACCENT_TEAL));
+        m_jPanelDown.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, ChromisTheme.ACCENT_GOLD));
         panelTask.setBackground(ChromisTheme.BG_DARK);
-        m_jHost.setForeground(ChromisTheme.TEXT_MUTED);
+        m_jHost.setForeground(ChromisTheme.ACCENT_GOLD);
         m_jHost.setFont(ChromisTheme.FONT_SMALL);
 
-        // Close button — danger red
+        // Exit button — red with gold border
         m_jClose.setBackground(ChromisTheme.DANGER);
         m_jClose.setForeground(java.awt.Color.WHITE);
         m_jClose.setFont(ChromisTheme.FONT_BUTTON);
         m_jClose.setOpaque(true);
-        m_jClose.setBorderPainted(false);
+        m_jClose.setBorderPainted(true);
+        m_jClose.setBorder(javax.swing.BorderFactory.createLineBorder(ChromisTheme.ACCENT_GOLD, 1));
         m_jClose.setFocusPainted(false);
         m_jClose.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
     }

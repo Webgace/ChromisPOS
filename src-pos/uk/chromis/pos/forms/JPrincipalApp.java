@@ -563,28 +563,29 @@ public class JPrincipalApp extends javax.swing.JPanel implements AppUserView {
     }
 
     private void applyModernStyling() {
-        // Dark sidebar panel
+        // Sidebar — deep navy with gold right border
         jPanel1.setBackground(ChromisTheme.BG_PANEL);
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, ChromisTheme.BORDER_COLOR));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 2, ChromisTheme.ACCENT_GOLD));
         m_jPanelLeft.setBackground(ChromisTheme.BG_PANEL);
         m_jPanelLeft.getViewport().setBackground(ChromisTheme.BG_PANEL);
         m_jPanelLeft.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 
-        // Flat sidebar toggle button
+        // Sidebar toggle button — matches dark panel
         jButton1.setBackground(ChromisTheme.BG_DARK);
-        jButton1.setForeground(ChromisTheme.TEXT_PRIMARY);
+        jButton1.setForeground(ChromisTheme.ACCENT_GOLD);
+        jButton1.setFont(ChromisTheme.FONT_BUTTON);
         jButton1.setOpaque(true);
         jButton1.setBorderPainted(false);
         jButton1.setFocusPainted(false);
         jButton1.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
 
-        // Teal-accented title strip
+        // Header — dark with TIIBS gold border
         m_jPanelTitle.setBackground(ChromisTheme.BG_DARK);
-        m_jPanelTitle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, ChromisTheme.ACCENT_TEAL));
-        m_jTitle.setForeground(ChromisTheme.TEXT_PRIMARY);
+        m_jPanelTitle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, ChromisTheme.ACCENT_GOLD));
+        m_jTitle.setForeground(ChromisTheme.ACCENT_GOLD);
         m_jTitle.setFont(ChromisTheme.FONT_HEADER);
 
-        // Light content area
+        // Content area — very light blue-white
         m_jPanelRight.setBackground(ChromisTheme.CONTENT_BG);
     }
 
