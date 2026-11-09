@@ -80,8 +80,9 @@ public class JRootFrame extends javax.swing.JFrame implements AppMessage {
             }   
             setTitle(AppLocal.APP_NAME + " - V" + AppLocal.APP_VERSION + AppLocal.APP_DEMO);               
             pack();
-            setLocationRelativeTo(null);        
-            
+            setMinimumSize(new java.awt.Dimension(1024, 680));
+            setLocationRelativeTo(null);
+
             setVisible(true);                        
         } else {
             new JFrmConfig(props).setVisible(true); // Show the configuration window.

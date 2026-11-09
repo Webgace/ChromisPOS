@@ -42,9 +42,7 @@ public class PaymentGatewayPayPoint implements PaymentGateway {
      * @param props */
     public PaymentGatewayPayPoint(AppProperties props) {
         
-        // Propiedades del sistema
-        System.setProperty("java.protocol.handler.pkgs", "com.sun.net.ssl.internal.www.protocol" );
-        Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+        // Propiedades del sistema (com.sun.net.ssl.internal.ssl.Provider removed in Java 11+; SunJSSE loads automatically)
             
         // Configuracion del pago
         m_sCommerceID = AppConfig.getInstance().getProperty("payment.commerceid");

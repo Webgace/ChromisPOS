@@ -137,6 +137,7 @@ public class StartPOS {
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
                     logger.log(Level.WARNING, "Cannot set Look and Feel", e);
                 }
+                ChromisTheme.applyTheme();
                 String hostname = AppConfig.getInstance().getProperty("machine.hostname");
                 TicketInfo.setHostname(hostname);
 
