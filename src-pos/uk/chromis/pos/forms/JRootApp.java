@@ -124,7 +124,7 @@ public class JRootApp extends JPanel implements AppView {
         public void actionPerformed(ActionEvent evt) {
             m_clock = getLineTimer();
             m_date = getLineDate();
-            m_jLblTitle.setText(m_dlSystem.getResourceAsText("Window.Title"));
+            m_jLblTitle.setText("Zunga Electrónica  —  TIIBS, Lda");
             m_jLblTitle.repaint();
             jLabel2.setText("  " + m_date + "  " + m_clock);
         }
@@ -318,46 +318,44 @@ public class JRootApp extends JPanel implements AppView {
         }
         m_jHost.setText("<html>" + AppConfig.getInstance().getHost() + " - " + sWareHouse + "<br>" + url);
 
-        // display the new logo if set
-        String newLogo = AppConfig.getInstance().getProperty("start.logo");
-        if (newLogo != null) {
-            if ("".equals(newLogo)) {
-                jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/chromis/fixedimages/chromis.png")));
-            } else {
-                jLabel1.setIcon(new javax.swing.ImageIcon(newLogo));
-            }
-        }
-
-        // Update Window.Title in DB to match new brand
+        // Update Window.Title in DB and header label to Zunga brand
         try {
             m_dlSystem.setResource("Window.Title", 0,
                 "Zunga Electr\u00F3nica | TIIBS, Lda".getBytes("UTF-8"));
         } catch (Exception e) {}
+        m_jLblTitle.setText("Zunga Electr\u00F3nica  \u2014  TIIBS, Lda");
 
-        // change text under logo
+        // Replace Chromis splash with Zunga Electr\u00F3nica branded panel
+        jLabel1.setIcon(null);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("<html>"
+            + "<div style='font-family:SansSerif;text-align:center;padding:30px 20px;'>"
+            + "<div style='background:#0D1B32;padding:24px 32px;border-radius:8px;'>"
+            + "<span style='font-size:28pt;font-weight:bold;color:#D9A010;letter-spacing:2px;'>Zunga Electr\u00F3nica</span><br>"
+            + "<div style='margin:4px 0 16px 0;border-bottom:2px solid #2563EB;width:80%;display:inline-block;'></div><br>"
+            + "<span style='font-size:13pt;color:#8BA3C8;font-style:italic;'>TIIBS, Lda &mdash; Technology Consultants</span><br><br>"
+            + "<span style='font-size:11pt;color:#5A7A9A;'>"
+            + "Sistema de Ponto de Venda &nbsp;&bull;&nbsp; Vers\u00E3o " + AppLocal.APP_VERSION + "</span><br><br>"
+            + "<span style='font-size:9pt;color:#3A5A7A;'>Software livre licenciado sob GNU GPL v3</span>"
+            + "</div>"
+            + "</div>"
+            + "</html>");
+        jPanel4.setBackground(ChromisTheme.BG_DARK);
+        jLabel1.setBackground(ChromisTheme.BG_DARK);
+        jLabel1.setOpaque(false);
+
+        // Allow custom logo/text overrides if configured
+        String newLogo = AppConfig.getInstance().getProperty("start.logo");
+        if (newLogo != null && !newLogo.isEmpty()) {
+            jLabel1.setIcon(new javax.swing.ImageIcon(newLogo));
+            jLabel1.setText(null);
+        }
         String newText = AppConfig.getInstance().getProperty("start.text");
-        if (newText != null) {
-            if (newText.equals("")) {
-                jLabel1.setText("<html><div style='font-family:SansSerif;text-align:center;padding:20px;'>"
-                        + "<span style='font-size:22pt;font-weight:bold;color:#D9A010;'>Zunga Electr\u00F3nica</span><br><br>"
-                        + "<span style='font-size:12pt;color:#8BA3C8;'>TIIBS, Lda &mdash; Technology Consultants</span><br><br>"
-                        + "<span style='font-size:9pt;color:#5A7A9A;'>Sistema de Ponto de Venda<br>"
-                        + "Vers\u00E3o " + AppLocal.APP_VERSION + "<br><br>"
-                        + "Software livre licenciado sob GNU GPL v3<br>"
-                        + "Baseado em Chromis POS &copy; 2015</span>"
-                        + "</div>");
-            } else {
-                try {
-                    String newTextCode = new Scanner(new File(newText), "UTF-8").useDelimiter("\\A").next();
-                    jLabel1.setText(newTextCode);
-                } catch (Exception e) {
-                }
-
-                jLabel1.setAlignmentX(0.5F);
-                jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-                jLabel1.setMaximumSize(new java.awt.Dimension(800, 1024));
-                jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-            }
+        if (newText != null && !newText.isEmpty()) {
+            try {
+                jLabel1.setText(new Scanner(new File(newText), "UTF-8").useDelimiter("\\A").next());
+            } catch (Exception e) {}
         }
 
         showLogin();
@@ -812,6 +810,15 @@ public class JRootApp extends JPanel implements AppView {
         jLabel2.setFont(ChromisTheme.FONT_SMALL);
         jLabel2.setBackground(ChromisTheme.BG_DARK);
         jLabel2.setOpaque(true);
+
+        // Replace "CHROMIS" logo with TIIBS brand text
+        poweredby.setIcon(null);
+        poweredby.setText("<html><div style='text-align:right;'>"
+            + "<span style='font-size:12pt;font-weight:bold;color:#D9A010;'>TIIBS</span>"
+            + "<span style='font-size:9pt;color:#5A7A9A;'>, Lda</span>"
+            + "</div></html>");
+        poweredby.setBackground(ChromisTheme.BG_DARK);
+        poweredby.setOpaque(true);
 
         // Login panel
         m_jPanelLogin.setBackground(ChromisTheme.BG_DARK);
