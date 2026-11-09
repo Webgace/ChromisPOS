@@ -95,6 +95,7 @@ public class JPrincipalApp extends javax.swing.JPanel implements AppUserView {
         m_aCreatedViews = new HashMap<>();
 
         initComponents();
+        applyModernStyling();
 
         jPanel2.add(Box.createVerticalStrut(50), 0);
 
@@ -559,6 +560,19 @@ public class JPrincipalApp extends javax.swing.JPanel implements AppUserView {
                     "Access Error", JOptionPane.WARNING_MESSAGE);
         }
         m_appview.waitCursorEnd();
+    }
+
+    private void applyModernStyling() {
+        jPanel1.setBackground(ChromisTheme.COLOR_SIDEBAR_BG);
+        m_jPanelLeft.setBackground(ChromisTheme.COLOR_SIDEBAR_BG);
+        m_jPanelLeft.getViewport().setBackground(ChromisTheme.COLOR_SIDEBAR_BG);
+        jButton1.setBackground(ChromisTheme.COLOR_SIDEBAR_BG);
+        jButton1.setOpaque(true);
+        jButton1.setBorderPainted(false);
+        m_jPanelTitle.setBackground(ChromisTheme.COLOR_PRIMARY);
+        m_jTitle.setForeground(java.awt.Color.WHITE);
+        m_jTitle.setFont(ChromisTheme.FONT_HEADER);
+        m_jPanelRight.setBackground(ChromisTheme.COLOR_CONTENT_BG);
     }
 
     /**

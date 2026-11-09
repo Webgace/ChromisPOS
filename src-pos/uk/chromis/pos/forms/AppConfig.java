@@ -166,7 +166,7 @@ public class AppConfig implements AppProperties {
         m_propsconfig.setProperty("user.language", l.getLanguage());
         m_propsconfig.setProperty("user.country", l.getCountry());
         m_propsconfig.setProperty("user.variant", l.getVariant());
-        m_propsconfig.setProperty("swing.defaultlaf", System.getProperty("swing.defaultlaf", "javax.swing.plaf.metal.MetalLookAndFeel"));
+        m_propsconfig.setProperty("swing.defaultlaf", System.getProperty("swing.defaultlaf", "org.pushingpixels.substance.api.skin.BusinessBlueSteelSkin"));
         m_propsconfig.setProperty("machine.printer", "screen");
         m_propsconfig.setProperty("machine.printer.2", "Not defined");
         m_propsconfig.setProperty("machine.printer.3", "Not defined");

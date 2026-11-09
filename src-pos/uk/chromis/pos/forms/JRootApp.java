@@ -174,6 +174,7 @@ public class JRootApp extends JPanel implements AppView {
         // Inicializo los componentes visuales
         initComponents();
         jScrollPane1.getVerticalScrollBar().setPreferredSize(new Dimension(30, 30));
+        applyModernStyling();
     }
 
     /**
@@ -795,6 +796,18 @@ public class JRootApp extends JPanel implements AppView {
         } else {
             inputtext.append(c);
         }
+    }
+
+    private void applyModernStyling() {
+        m_jPanelTitle.setBackground(ChromisTheme.COLOR_HEADER_BG);
+        m_jLblTitle.setFont(ChromisTheme.FONT_HEADER);
+        m_jLblTitle.setForeground(ChromisTheme.COLOR_HEADER_FG);
+        m_jPanelDown.setBackground(ChromisTheme.COLOR_STATUSBAR_BG);
+        m_jClose.setBackground(ChromisTheme.COLOR_PRIMARY);
+        m_jClose.setForeground(java.awt.Color.WHITE);
+        m_jClose.setOpaque(true);
+        m_jClose.setBorderPainted(false);
+        m_jClose.setFocusPainted(false);
     }
 
     /**
