@@ -19,7 +19,6 @@ REM    You should have received a copy of the GNU General Public License
 REM    along with Chromis POS.  If not, see <http://www.gnu.org/licenses/>
 REM
 
-set DIRNAME=%~dp0
-set CP="%DIRNAME%chromispos.jar"
+cd /d "%~dp0"
 
-start "Zunga Electronica" javaw -cp %CP% -Ddirname.path="%DIRNAME%" uk.chromis.pos.forms.StartPOS %1
+start "Zunga Electronica" javaw -cp chromispos.jar -Ddirname.path=. uk.chromis.pos.forms.StartPOS %1
