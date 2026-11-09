@@ -21,4 +21,4 @@ REM
 
 cd /d "%~dp0"
 
-start "Zunga Electronica" javaw -cp chromispos.jar -Ddirname.path=. uk.chromis.pos.forms.StartPOS %1
+start "Zunga Electronica" javaw -cp "chromispos-app.jar;lib\*" -Ddirname.path=. uk.chromis.pos.forms.StartPOS %1
