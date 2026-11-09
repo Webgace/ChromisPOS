@@ -811,11 +811,10 @@ public class JRootApp extends JPanel implements AppView {
         jLabel2.setBackground(ChromisTheme.BG_DARK);
         jLabel2.setOpaque(true);
 
-        // Replace "CHROMIS" logo with TIIBS brand text
+        // Replace "CHROMIS" logo with TIIBS tagline
         poweredby.setIcon(null);
         poweredby.setText("<html><div style='text-align:right;'>"
-            + "<span style='font-size:12pt;font-weight:bold;color:#D9A010;'>TIIBS</span>"
-            + "<span style='font-size:9pt;color:#5A7A9A;'>, Lda</span>"
+            + "<span style='font-size:9pt;font-style:italic;color:#8BA3C8;'>Technology Consultants</span>"
             + "</div></html>");
         poweredby.setBackground(ChromisTheme.BG_DARK);
         poweredby.setOpaque(true);
@@ -823,6 +822,17 @@ public class JRootApp extends JPanel implements AppView {
         // ── Restructure login layout: move user buttons from EAST → SOUTH ──
         m_jPanelLogin.setBackground(ChromisTheme.BG_DARK);
         jPanel4.setBackground(ChromisTheme.BG_DARK);
+
+        // Add tagline below the splash card (jPanel4 uses BoxLayout Y_AXIS)
+        javax.swing.JLabel taglineLabel = new javax.swing.JLabel(
+            "<html><div style='text-align:center;padding:10px 0 0 0;'>"
+            + "<span style='font-size:11pt;font-style:italic;color:#8BA3C8;'>"
+            + "Transformando Ideas em Soluções de Negócio</span>"
+            + "</div></html>");
+        taglineLabel.setAlignmentX(0.5F);
+        taglineLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        taglineLabel.setOpaque(false);
+        jPanel4.add(taglineLabel);
 
         // Remove jPanel5 (right column) from EAST so the splash fills the full width
         m_jPanelLogin.remove(jPanel5);
