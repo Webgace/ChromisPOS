@@ -820,17 +820,57 @@ public class JRootApp extends JPanel implements AppView {
         poweredby.setBackground(ChromisTheme.BG_DARK);
         poweredby.setOpaque(true);
 
-        // Login panel
+        // ── Restructure login layout: move user buttons from EAST → SOUTH ──
         m_jPanelLogin.setBackground(ChromisTheme.BG_DARK);
         jPanel4.setBackground(ChromisTheme.BG_DARK);
-        jPanel5.setBackground(ChromisTheme.BG_PANEL);
-        m_jLogonName.setBackground(ChromisTheme.BG_PANEL);
-        jPanel2.setBackground(ChromisTheme.BG_PANEL);
-        jPanel8.setBackground(ChromisTheme.BG_PANEL);
-        jPanel1.setBackground(ChromisTheme.BG_PANEL);
+
+        // Remove jPanel5 (right column) from EAST so the splash fills the full width
+        m_jPanelLogin.remove(jPanel5);
+
+        // Extract jScrollPane1 (user buttons) and m_jClose from jPanel5
+        jPanel5.remove(jScrollPane1);
+        jPanel5.remove(jPanel1);   // jPanel1 holds m_txtKeys + m_jClose
+
+        // Build a horizontal bottom bar
+        javax.swing.JPanel loginBottom = new javax.swing.JPanel(new java.awt.BorderLayout(0, 0));
+        loginBottom.setBackground(ChromisTheme.BG_PANEL);
+        loginBottom.setPreferredSize(new java.awt.Dimension(0, 115));
+        loginBottom.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+            javax.swing.BorderFactory.createMatteBorder(3, 0, 0, 0, ChromisTheme.ACCENT_GOLD),
+            javax.swing.BorderFactory.createEmptyBorder(8, 10, 8, 10)));
+
+        // User buttons — scroll horizontally, never vertically
+        jScrollPane1.setVerticalScrollBarPolicy(
+            javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane1.setHorizontalScrollBarPolicy(
+            javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        jScrollPane1.setBorder(null);
         jScrollPane1.setBackground(ChromisTheme.BG_PANEL);
         jScrollPane1.getViewport().setBackground(ChromisTheme.BG_PANEL);
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, ChromisTheme.ACCENT_GOLD));
+        loginBottom.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        // Exit button on the far right
+        m_jClose.setPreferredSize(new java.awt.Dimension(130, 90));
+        m_jClose.setBackground(ChromisTheme.DANGER);
+        m_jClose.setForeground(java.awt.Color.WHITE);
+        m_jClose.setFont(ChromisTheme.FONT_BUTTON);
+        m_jClose.setOpaque(true);
+        m_jClose.setBorderPainted(true);
+        m_jClose.setBorder(javax.swing.BorderFactory.createLineBorder(ChromisTheme.ACCENT_GOLD, 2));
+        m_jClose.setFocusPainted(false);
+        m_jClose.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
+        javax.swing.JPanel exitWrapper = new javax.swing.JPanel(
+            new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 0, 0));
+        exitWrapper.setBackground(ChromisTheme.BG_PANEL);
+        exitWrapper.add(m_jClose);
+        loginBottom.add(exitWrapper, java.awt.BorderLayout.EAST);
+
+        // Keep m_txtKeys (hidden zero-size key listener)
+        loginBottom.add(m_txtKeys, java.awt.BorderLayout.NORTH);
+        m_txtKeys.setPreferredSize(new java.awt.Dimension(0, 0));
+
+        m_jPanelLogin.add(loginBottom, java.awt.BorderLayout.SOUTH);
+        m_jPanelLogin.revalidate();
 
         // Status bar — dark with gold top border
         m_jPanelDown.setBackground(ChromisTheme.BG_DARK);
@@ -838,16 +878,6 @@ public class JRootApp extends JPanel implements AppView {
         panelTask.setBackground(ChromisTheme.BG_DARK);
         m_jHost.setForeground(ChromisTheme.ACCENT_GOLD);
         m_jHost.setFont(ChromisTheme.FONT_SMALL);
-
-        // Exit button — red with gold border
-        m_jClose.setBackground(ChromisTheme.DANGER);
-        m_jClose.setForeground(java.awt.Color.WHITE);
-        m_jClose.setFont(ChromisTheme.FONT_BUTTON);
-        m_jClose.setOpaque(true);
-        m_jClose.setBorderPainted(true);
-        m_jClose.setBorder(javax.swing.BorderFactory.createLineBorder(ChromisTheme.ACCENT_GOLD, 1));
-        m_jClose.setFocusPainted(false);
-        m_jClose.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
     }
 
     /**
