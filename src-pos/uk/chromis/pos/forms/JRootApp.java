@@ -827,7 +827,11 @@ public class JRootApp extends JPanel implements AppView {
         javax.swing.JLabel taglineLabel = new javax.swing.JLabel(
             "<html><div style='text-align:center;padding:10px 0 0 0;'>"
             + "<span style='font-size:11pt;font-style:italic;color:#8BA3C8;'>"
-            + "Transformando Ideas em Soluções de Negócio</span>"
+            + "Transformando Ideas em Soluções de Negócio"
+            + "</span>"
+            + "<span style='font-size:11pt;color:#3A5A7A;'> &nbsp;|&nbsp; </span>"
+            + "<span style='font-size:11pt;font-style:italic;color:#5A7A9A;'>"
+            + "Transforming Ideas Into Business Solutions</span>"
             + "</div></html>");
         taglineLabel.setAlignmentX(0.5F);
         taglineLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
