@@ -643,9 +643,10 @@ public class JRootApp extends JPanel implements AppView {
                 btn.setFocusPainted(false);
                 btn.setFocusable(false);
                 btn.setRequestFocusEnabled(false);
-                btn.setMaximumSize(new Dimension(130, 60));
-                btn.setPreferredSize(new Dimension(130, 60));
-                btn.setMinimumSize(new Dimension(130, 60));
+                btn.setMaximumSize(new Dimension(160, 90));
+                btn.setPreferredSize(new Dimension(160, 90));
+                btn.setMinimumSize(new Dimension(160, 90));
+                ChromisTheme.styleUserButton(btn);
                 btn.setHorizontalAlignment(SwingConstants.CENTER);
                 btn.setHorizontalTextPosition(AbstractButton.CENTER);
                 btn.setVerticalTextPosition(AbstractButton.BOTTOM);
@@ -799,15 +800,43 @@ public class JRootApp extends JPanel implements AppView {
     }
 
     private void applyModernStyling() {
-        m_jPanelTitle.setBackground(ChromisTheme.COLOR_HEADER_BG);
+        // Header strip
+        m_jPanelTitle.setBackground(ChromisTheme.BG_DARK);
+        m_jPanelTitle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, ChromisTheme.ACCENT_TEAL));
         m_jLblTitle.setFont(ChromisTheme.FONT_HEADER);
-        m_jLblTitle.setForeground(ChromisTheme.COLOR_HEADER_FG);
-        m_jPanelDown.setBackground(ChromisTheme.COLOR_STATUSBAR_BG);
-        m_jClose.setBackground(ChromisTheme.COLOR_PRIMARY);
+        m_jLblTitle.setForeground(ChromisTheme.TEXT_PRIMARY);
+        jLabel2.setForeground(ChromisTheme.TEXT_MUTED);
+        jLabel2.setFont(ChromisTheme.FONT_SMALL);
+        jLabel2.setBackground(ChromisTheme.BG_DARK);
+        jLabel2.setOpaque(true);
+
+        // Login panel areas
+        m_jPanelLogin.setBackground(ChromisTheme.BG_DARK);
+        jPanel4.setBackground(ChromisTheme.BG_DARK);
+        jPanel5.setBackground(ChromisTheme.BG_PANEL);
+        m_jLogonName.setBackground(ChromisTheme.BG_PANEL);
+        jPanel2.setBackground(ChromisTheme.BG_PANEL);
+        jPanel8.setBackground(ChromisTheme.BG_PANEL);
+        jPanel1.setBackground(ChromisTheme.BG_PANEL);
+        jScrollPane1.setBackground(ChromisTheme.BG_DARK);
+        jScrollPane1.getViewport().setBackground(ChromisTheme.BG_DARK);
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(ChromisTheme.BORDER_COLOR, 1));
+
+        // Status bar
+        m_jPanelDown.setBackground(ChromisTheme.BG_DARK);
+        m_jPanelDown.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 0, 0, 0, ChromisTheme.ACCENT_TEAL));
+        panelTask.setBackground(ChromisTheme.BG_DARK);
+        m_jHost.setForeground(ChromisTheme.TEXT_MUTED);
+        m_jHost.setFont(ChromisTheme.FONT_SMALL);
+
+        // Close button — danger red
+        m_jClose.setBackground(ChromisTheme.DANGER);
         m_jClose.setForeground(java.awt.Color.WHITE);
+        m_jClose.setFont(ChromisTheme.FONT_BUTTON);
         m_jClose.setOpaque(true);
         m_jClose.setBorderPainted(false);
         m_jClose.setFocusPainted(false);
+        m_jClose.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
     }
 
     /**

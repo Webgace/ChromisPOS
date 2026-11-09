@@ -563,16 +563,29 @@ public class JPrincipalApp extends javax.swing.JPanel implements AppUserView {
     }
 
     private void applyModernStyling() {
-        jPanel1.setBackground(ChromisTheme.COLOR_SIDEBAR_BG);
-        m_jPanelLeft.setBackground(ChromisTheme.COLOR_SIDEBAR_BG);
-        m_jPanelLeft.getViewport().setBackground(ChromisTheme.COLOR_SIDEBAR_BG);
-        jButton1.setBackground(ChromisTheme.COLOR_SIDEBAR_BG);
+        // Dark sidebar panel
+        jPanel1.setBackground(ChromisTheme.BG_PANEL);
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 1, ChromisTheme.BORDER_COLOR));
+        m_jPanelLeft.setBackground(ChromisTheme.BG_PANEL);
+        m_jPanelLeft.getViewport().setBackground(ChromisTheme.BG_PANEL);
+        m_jPanelLeft.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+
+        // Flat sidebar toggle button
+        jButton1.setBackground(ChromisTheme.BG_DARK);
+        jButton1.setForeground(ChromisTheme.TEXT_PRIMARY);
         jButton1.setOpaque(true);
         jButton1.setBorderPainted(false);
-        m_jPanelTitle.setBackground(ChromisTheme.COLOR_PRIMARY);
-        m_jTitle.setForeground(java.awt.Color.WHITE);
+        jButton1.setFocusPainted(false);
+        jButton1.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
+
+        // Teal-accented title strip
+        m_jPanelTitle.setBackground(ChromisTheme.BG_DARK);
+        m_jPanelTitle.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, ChromisTheme.ACCENT_TEAL));
+        m_jTitle.setForeground(ChromisTheme.TEXT_PRIMARY);
         m_jTitle.setFont(ChromisTheme.FONT_HEADER);
-        m_jPanelRight.setBackground(ChromisTheme.COLOR_CONTENT_BG);
+
+        // Light content area
+        m_jPanelRight.setBackground(ChromisTheme.CONTENT_BG);
     }
 
     /**
