@@ -125,6 +125,9 @@ public class StartPOS {
                 Formats.setTimePattern(AppConfig.getInstance().getProperty("format.time"));
                 Formats.setDateTimePattern(AppConfig.getInstance().getProperty("format.datetime"));
 
+                // Prime Nimbus palette before LAF installation
+                ChromisTheme.applyNimbusDefaults();
+
                 // Set the look and feel.
                 try {
 
