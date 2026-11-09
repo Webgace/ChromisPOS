@@ -22,4 +22,4 @@ REM
 set DIRNAME=%~dp0
 set CP="%DIRNAME%chromispos.jar"
 
-start  javaw -cp %CP% -Djava.library.path="%DIRNAME%lib/Windows/i368-mingw32" -Ddirname.path="%DIRNAME%./" -splash:chromis_splash.png uk.chromis.pos.forms.StartPOS %1
+start "Zunga Electronica" javaw -cp %CP% -Ddirname.path="%DIRNAME%" uk.chromis.pos.forms.StartPOS %1
